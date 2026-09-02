@@ -11,3 +11,11 @@ Automatically commits and pushed your Packet Tracer save files to a GitHub repos
 ## Files
 - `Setup.ps1` - run to initialize the repository and link it to GitHub
 - `Watch.ps1` - run to watch the save folder and upload save files to the repository
+
+## 1. Setup
+
+1. First you want to move the scripts to a trusted scripts folder, in order to run the scripts without certificate verification.
+2. Next you need to create an exception to this folder by running 
+``` powershell
+powershell.exe -NoExit -ExecutionPolicy Bypass -Command "Set-Location 'C:\path\to\folder'"
+```
