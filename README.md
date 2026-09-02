@@ -21,7 +21,7 @@ powershell.exe -NoExit -ExecutionPolicy Bypass -Command "Set-Location 'C:\path\t
 ```
 3. Change to the directory containing the scripts and run
 ``` powershell
-.\Setup-PTSync.ps1 -FolderPath "C:\path\to\save\files" -RepoUrl "https://github.com/YOURGITHUBUSERNAME/DESIREDNAMEOFREPO.git"
+.\Setup.ps1 -FolderPath "C:\path\to\save\files" -RepoUrl "https://github.com/YOURGITHUBUSERNAME/DESIREDNAMEOFREPO.git"
 ```
 This setup script:
 - Initializes git into the save folder
@@ -33,7 +33,7 @@ YOU NEED TO HAVE A SAVE FILE IN THE FOLDER FOR THE SETUP SCRIPT TO MAKE A REPOSI
 ## 2. Watch the Save Folder
 
 ```powershell
-.\Watch-PTSync.ps1 -FolderPath "C:\path\to\save\files"
+.\Watch.ps1 -FolderPath "C:\path\to\save\files"
 ```
 
 Leave the created PowerShell window open in the background. Every time you save a save file to the specified path, the script with commit and push the file to the repository automatically. You will see status messages in the PowerShell window.
