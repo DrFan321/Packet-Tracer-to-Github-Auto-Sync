@@ -19,3 +19,38 @@ Automatically commits and pushed your Packet Tracer save files to a GitHub repos
 ``` powershell
 powershell.exe -NoExit -ExecutionPolicy Bypass -Command "Set-Location 'C:\path\to\folder'"
 ```
+3. Change to the directory containing the scripts and run
+``` powershell
+.\Setup-PTSync.ps1 -FolderPath "C:\path\to\save\files" -RepoUrl "https://github.com/YOURGITHUBUSERNAME/DESIREDNAMEOFREPO.git"
+```
+This setup script:
+- Initializes git into the save folder
+- Adds a `.gitignore` for Packet Tracer lock/temp filers
+- Makes an initial commit and pushs it to the repository
+
+YOU NEED TO HAVE A SAVE FILE IN THE FOLDER FOR THE SETUP SCRIPT TO MAKE A REPOSITORY
+
+## 2. Watch the Save Folder
+
+```powershell
+.\Watch-PTSync.ps1 -FolderPath "C:\path\to\save\files"
+```
+
+Leave the created PowerShell window open in the background. Every time you save a save file to the specified path, the script with commit and push the file to the repository automatically. You will see status messages in the PowerShell window.
+
+Press `Ctrl+C` to stop watching.
+
+### Optional parameters
+- `-DebounceSeconds` - waits longer before syncing (use if you have a slower computer, internet connection, or are working with larger save files)
+- `-Branch main` - change this if your default branch is named differently
+- `-Extensions` - used to restrict automatic upload to certain file types
+
+## 3. (Optional) Run automatically at login
+
+1. Press `Win + R`, type `shell:startup`, and hit Enter.
+2. Right click the folder and select to create a shortcut pointing to
+  ```
+   powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\path\to\Watch.ps1" -FolderPath "C:\path\to\save\files"
+   ```
+3. It will now start whenever you log in to windows.
+
